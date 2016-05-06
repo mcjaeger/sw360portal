@@ -328,10 +328,6 @@ service ComponentService {
     bool releaseIsUsed(1: string releaseId);
     bool componentIsUsed(1: string componentId);
 
-    RequestStatus removeAttachmentFromComponent(1: string componentId, 2:User user, 3:string attachmentContentId);
-
-    RequestStatus removeAttachmentFromRelease(1: string releaseId, 2:User user, 3:string attachmentContentId);
-
     // These two methods are needed because there is no rights management needed to subscribe
     RequestStatus subscribeComponent(1: string id, 2: User user);
     RequestStatus subscribeRelease(1: string id, 2: User user);
