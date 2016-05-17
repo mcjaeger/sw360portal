@@ -1,5 +1,5 @@
 /*
- * Copyright Siemens AG, 2014-2015. Part of the SW360 Portal Project.
+ * Copyright Siemens AG, 2014-2016. Part of the SW360 Portal Project.
  *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License Version 2.0 as published by the
@@ -27,6 +27,7 @@ import com.siemens.sw360.datahandler.thrift.projects.ProjectService;
 import com.siemens.sw360.datahandler.thrift.search.SearchService;
 import com.siemens.sw360.datahandler.thrift.users.UserService;
 import com.siemens.sw360.datahandler.thrift.vendors.VendorService;
+import com.siemens.sw360.datahandler.thrift.vulnerabilities.VulnerabilityService;
 import org.apache.log4j.Logger;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TCompactProtocol;
@@ -42,6 +43,7 @@ import static org.apache.log4j.Logger.getLogger;
  * Created by bodet on 11/02/15.
  *
  * @author cedric.bodet@tngtech.com
+ * @author stefan.jaeger@evosoft.com
  */
 public class ThriftClients {
 
@@ -61,6 +63,7 @@ public class ThriftClients {
     public static final String SEARCH_SERVICE_URL = "/search/thrift";
     public static final String USER_SERVICE_URL = "/users/thrift";
     public static final String VENDOR_SERVICE_URL = "/vendors/thrift";
+    public static final String VULNERABILITY_SERVICE_URL = "/vulnerabilities/thrift";
 
     static {
         Properties props = CommonUtils.loadProperties(ThriftClients.class, PROPERTIES_FILE_PATH);
@@ -119,6 +122,10 @@ public class ThriftClients {
 
     public VendorService.Iface makeVendorClient() {
         return new VendorService.Client(makeProtocol(BACKEND_URL, VENDOR_SERVICE_URL));
+    }
+
+    public VulnerabilityService.Iface makeVulnerabilityClient() {
+        return new VulnerabilityService.Client(makeProtocol(BACKEND_URL, VULNERABILITY_SERVICE_URL));
     }
 
 }
